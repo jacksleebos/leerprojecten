@@ -1,0 +1,224 @@
+<!doctype html>
+<html>  
+<head>
+
+        <style>
+          
+                ul {
+                background: #bd8b9e;
+                padding: 20px;
+                }
+
+                ul li {
+                background: #8d4b64;
+                margin: 10px;
+                }
+            
+                body {
+                  background-color: #d69797;
+                }
+                body {
+                  color: rgb black;
+                }
+              
+        </style>
+                          
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+    <script>
+        function voegIemandToe() {
+            var gender, man = false, vrouw = false;
+            gender = document.getElementsByName("gender");
+            if (gender[0].checked) man = true;
+            if (gender[1].checked) vrouw = true;
+
+            var node = document.createElement("LI");
+
+            node.setAttribute("class", "w3-bar");
+
+            // Append the text to <li>
+            // Append <li> to <ul> with id="myList" 
+            document.getElementById("myList").appendChild(node);    
+            var sImage = document.createElement("IMG");
+            if (vrouw === true)
+                sImage.src = "girl.png";
+            if (man === true)
+                sImage.src = "boy.png";
+            sImage.setAttribute("class", "w3-bar-item w3-circle w3-hide-small");
+            sImage.setAttribute("style", "width:85px");
+
+            node.appendChild(sImage);
+
+            var sSpan = document.createElement("SPAN");
+
+            var textnodeNaam = "x";
+
+            sSpan.innerText = textnodeNaam;
+            sSpan.className = "w3-bar-item w3-button w3-white w3-xlarge w3-right";
+            sSpan.onclick = function (e) { this.parentNode.remove() };
+            node.appendChild(sSpan);
+            var naamDiv = document.createElement("DIV");
+
+
+            naamDiv.className = "w3-bar-item";
+
+            node.appendChild(naamDiv);
+            var vnaam = document.getElementById("naam").value;
+            var naamSpan = document.createElement("SPAN");
+            naamSpan.innerText = vnaam;
+            naamSpan.className = "w3-large";
+
+            naamDiv.appendChild(naamSpan);
+            var newLine = document.createElement("Br");
+            naamSpan.appendChild(newLine);
+            var functie = document.getElementById("functie").value;
+            var functieSpan = document.createElement("SPAN");
+            functieSpan.innerText = functie;
+            naamDiv.appendChild(functieSpan);
+
+
+        }
+
+        function myFilterFunction() 
+        {
+            var input, filter, ul, li, a, i, txtValue;
+            input = document.getElementById("search");
+            filter = input.value.toUpperCase();
+            ul = document.getElementById("myList");
+            li = ul.getElementsByTagName('li');
+                for (i = 0; i < li.length; i++) {
+                txtValue = li[i].innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    li[i].style.display = "";
+                } else {
+                    li[i].style.display = "none";
+                }
+            }
+        }
+
+        function sortList() 
+        {
+            var list, i, switching, b, shouldSwitch;
+            list = document.getElementById("myList");
+            switching = true;
+            /* Make a loop that will continue until
+            no switching has been done: */
+            while (switching) {
+                // start by saying: no switching is done:
+                switching = false;
+                b = list.getElementsByTagName("LI");
+                var sortType = document.getElementsByName("sortType");
+                if (sortType[0].checked) {
+                    // Loop through all list-items:
+                    for (i = 0; i < (b.length - 1); i++) {
+                        // start by saying there should be no switching:
+                        shouldSwitch = false;
+                        /* check if the next item should
+                        switch place with the current item: */
+                        if (b[i].innerHTML.toLowerCase().trim() > b[i + 1].innerHTML.toLowerCase().trim())
+                         {
+                            /* if next item is alphabetically
+                            lower than current item, mark as a switch
+                            and break the loop: */
+                            shouldSwitch = true;
+                            break;
+                        }
+                    }
+                    if (shouldSwitch) {
+                        /* If a switch has been marked, make the switch
+                        and mark the switch as done: */
+                        b[i].parentNode.insertBefore(b[i + 1], b[i]);
+                        switching = true;
+                    }
+                }
+
+                else if (sortType[1].checked) {
+                    for (i = 0; i < (b.length - 1); i++) {
+                        // start by saying there should be no switching:
+                        shouldSwitch = false;
+                        /* check if the next item should
+                        switch place with the current item: */
+
+                        if (b[i].innerHTML.toLowerCase().trim() < b[i + 1].innerHTML.toLowerCase().trim()) 
+                        {
+                            /* if next item is alphabetically
+                            lower than current item, mark as a switch
+                            and break the loop: */
+                            shouldSwitch = true;
+                            break;
+                        }
+                    }
+                    if (shouldSwitch) 
+                    {
+                        /* If a switch has been marked, make the switch
+                        and mark the switch as done: */
+                        b[i].parentNode.insertBefore(b[i + 1], b[i]);
+                        switching = true;
+                    }
+                }
+            }
+        }
+
+
+    </script>
+</head>
+
+<body>
+   <center> <h1>Contactlijst</h1></center> 
+    <div class="w3-container">
+
+        <input type="text" id="search" onkeyup="myFilterFunction();" placeholder="Search...">
+        <input type="text" id="naam" placeholder="New...">
+        <input type="radio" name="gender" id="man" value="man" checked> Man
+        <input type="radio" name="gender" id="vrouw" value="vrouw"> Vrouw
+        <input type="text" id="functie" placeholder="Functie..." required>
+                <style>button{border-radius: 20% } 
+                input[type=text]{border-radius: 20%}</style> 
+        <button onclick="voegIemandToe();"> Add </button>
+        <input type="radio" name="sortType" id="asc" value="asc" checked> Asc
+        <input type="radio" name="sortType" id="desc" value="desc"> Desc
+        <button onclick="sortList();">Sort</button>
+        <button onclick="Delete();">Delete</button>
+
+<ul id="myList" class="w3-ul w3-card-4">
+    <li     class="w3-bar"> <img src="boy.png" class="w3-bar-item w3-circle w3-hide-small" style="width:85px">
+            <span onclick="this.parentElement.style.display='none'" class="w3-bar-item w3-button w3-white w3-xlarge w3-right">×</span>
+        <div 
+            class="w3-bar-item">
+            <span class="w3-large">Floris</span><br>
+            <span>Manager</span>
+        </div>
+    </li>
+
+     <li    class="w3-bar"> <img src="girl.png" class="w3-bar-item w3-circle w3-hide-small" style="width:85px">
+            <span onclick="this.parentElement.style.display='none'" class="w3-bar-item w3-button w3-white w3-xlarge w3-right">×</span>
+        <div 
+            class="w3-bar-item">
+            <span class="w3-large">Maha</span><br>
+            <span>Manager</span>
+        </div>
+    </li>
+
+     <li    class="w3-bar"> <img src="boy.png" class="w3-bar-item w3-circle w3-hide-small" style="width:85px">
+            <span onclick="this.parentElement.style.display='none'" class="w3-bar-item w3-button w3-white w3-xlarge w3-right">×</span>
+      <div 
+            class="w3-bar-item">
+            <span class="w3-large">Paul</span><br>
+            <span>Manager</span>
+    </div>
+    </li>
+    <li     class="w3-bar"> <img src="boy.png" class="w3-bar-item w3-circle w3-hide-small" style="width:85px">
+            <span onclick="this.parentElement.style.display='none'" class="w3-bar-item w3-button w3-white w3-xlarge w3-right">×</span>
+      <div
+            class="w3-bar-item">
+            <span class="w3-large">Jack</span><br>
+            <span>Manager</span>
+    </div>
+    </li>
+
+ </ul>
+    </div>
+</body>
+
+</html>

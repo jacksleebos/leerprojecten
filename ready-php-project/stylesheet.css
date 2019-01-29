@@ -1,0 +1,33 @@
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box;}
+
+/* Style inputs with type="text", select elements and textareas */
+input[type=text], select, textarea {
+  width: 100%; /* Full width */
+  padding: 10px; /* Some padding */  
+  border: 5px solid #ccc; /* Gray border */
+  border-radius: 4px; /* Rounded borders */
+  box-sizing: border-box; /* Make sure that padding and width stays in place */
+  margin-top: 16px; /* Add a top margin */
+  margin-bottom: 16px; /* Bottom margin */
+ 
+}
+/* Style the submit button with a specific background color etc */
+input[type=submit] {
+  background-color: #ccc;
+  color: black;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+/* When moving the mouse over the submit button, add a darker green color */
+input[type=submit]:hover {
+  background-color: #46466d;
+}
+/* Add a background color and some padding around the form */
+.container {
+  border-radius: 20px;
+  background-color: #ff6600;
+  padding: 10px;
+}
