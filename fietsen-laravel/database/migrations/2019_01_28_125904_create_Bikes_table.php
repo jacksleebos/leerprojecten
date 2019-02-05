@@ -16,7 +16,7 @@ class CreateBikesTable extends Migration
                 Schema::create('bikes', function (Blueprint $table) {
                     $table->increments('id');
                     $table->text('omschrijving');
-                    $table->float('prijs');
+                    $table->double('prijs');
                     $table->timestamps();
                 });
             }

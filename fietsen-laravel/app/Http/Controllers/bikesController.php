@@ -17,10 +17,10 @@ class bikesController extends Controller
 
     public function create()
     {
-          $bikesArray = bikes::all();
 
 
-          return view ('create', compact('bikesArray'));
+
+          return view ('bikes.create');
     }
     public function show(){
 
@@ -34,11 +34,12 @@ class bikesController extends Controller
     }
     public function store()
     {
-          $bikesArray = bikes::all();
-      $bikesArray->title = request('title)');
-      $bikesArray->omschrijving = request('omschrijving');
-          $bikesArray->save();
-          return redirect('/bikes');
+        //bikes::create(request(['prijs','omschrijving']));
+        $bike = new bikes();
+      $bike->prijs = request('prijs');
+      $bike->omschrijving = request('omschrijving');
+          $bike->save();
+          return redirect('/bikes/index');
     }
 
 
