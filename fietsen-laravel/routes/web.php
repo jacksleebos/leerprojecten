@@ -36,3 +36,7 @@ Route::get('/bikes/index', 'bikesController@index');
  Route::delete('/bikes/{bikes}/edit' , 'bikesController@destroy');
 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

@@ -22,8 +22,9 @@ class bikesController extends Controller
 
           return view ('bikes.create');
     }
-    public function show(){
-
+    public function show($id){
+        $bikes = bikes::find($id);
+        return view('bikes.show', compact('bikes'));
     }
     public function edit($id){
         $bikes = bikes::find($id);
