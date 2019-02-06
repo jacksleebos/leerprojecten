@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('content')
-<h1 class="title">{{$bikes->omschrijving}}</h1>
+<h1 class="omschrijving">{{$bikes->omschrijving}}</h1>
 <div class="content">
         {{$bikes->prijs}} <br>
 
